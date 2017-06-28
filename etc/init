@@ -22,20 +22,14 @@ SINGULARITYENV_HISTFILE=""
 
 export SINGULARITYENV_PATH SINGULARITYENV_HISTFILE
 
-# UGent only allow images from user scratch directories
-# and VSC singularity group users.
+# HPC-UGent only allows users in the 'gsingularity' group to use Singularity
+SINGULARITY_VSC_GROUP="gsingularity"
+
 # $IMAGE_PATH will be empty if realpath is not able to find
 # $SINGULARITY_IMAGE in the file system.
 IMAGE_PATH="$(/usr/bin/realpath "$SINGULARITY_IMAGE" 2> /dev/null)"
-SINGULARITY_VSC_GROUP="gsingularity"
-
 if [ -z "$IMAGE_PATH" ]; then
     echo "ERROR: $SINGULARITY_IMAGE is not a valid image" >&2
-    exit 1
-fi
-
-if [[ $IMAGE_PATH =~ /vscmnt/.+_apps/.+|.+/user/(home|data)/.+ ]]; then
-    echo "ERROR: found not allowed path in $IMAGE_PATH" >&2
     exit 1
 fi
 

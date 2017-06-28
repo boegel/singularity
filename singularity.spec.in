@@ -21,7 +21,7 @@
 # 
 
 
-%{!?_rel:%{expand:%%global _rel 0.11}}
+%{!?_rel:%{expand:%%global _rel 0.12}}
 
 # This allows us to pick up the default value from the configure
 %define with_slurm @with_slurm@
