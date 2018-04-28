@@ -84,17 +84,11 @@ fi
 
 %post
 /usr/bin/chown root:%{gsingularityid} %{_libexecdir}/singularity/bin/action-suid
-/usr/bin/chown root:%{gsingularityid} %{_libexecdir}/singularity/bin/create-suid
-/usr/bin/chown root:%{gsingularityid} %{_libexecdir}/singularity/bin/expand-suid
-/usr/bin/chown root:%{gsingularityid} %{_libexecdir}/singularity/bin/export-suid
-/usr/bin/chown root:%{gsingularityid} %{_libexecdir}/singularity/bin/import-suid
 /usr/bin/chown root:%{gsingularityid} %{_libexecdir}/singularity/bin/mount-suid
+/usr/bin/chown root:%{gsingularityid} %{_libexecdir}/singularity/bin/start-suid
 /usr/bin/chmod u+s %{_libexecdir}/singularity/bin/action-suid
-/usr/bin/chmod u+s %{_libexecdir}/singularity/bin/create-suid
-/usr/bin/chmod u+s %{_libexecdir}/singularity/bin/expand-suid
-/usr/bin/chmod u+s %{_libexecdir}/singularity/bin/export-suid
-/usr/bin/chmod u+s %{_libexecdir}/singularity/bin/import-suid
 /usr/bin/chmod u+s %{_libexecdir}/singularity/bin/mount-suid
+/usr/bin/chmod u+s %{_libexecdir}/singularity/bin/start-suid
 
 %install
 %{__make} install DESTDIR=$RPM_BUILD_ROOT %{?mflags_install}
